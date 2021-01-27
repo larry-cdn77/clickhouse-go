@@ -3,7 +3,6 @@ package clickhouse
 import (
 	"database/sql"
 	"database/sql/driver"
-	"time"
 
 	"github.com/ClickHouse/clickhouse-go/lib/data"
 )
@@ -17,22 +16,7 @@ type Clickhouse interface {
 	Rollback() error
 	Close() error
 	WriteBlock(block *data.Block) error
-}
-
-// Interface for Block allowing writes to individual columns
-type ColumnWriter interface {
-	WriteDate(c int, v time.Time) error
-	WriteDateTime(c int, v time.Time) error
-	WriteUInt8(c int, v uint8) error
-	WriteUInt16(c int, v uint16) error
-	WriteUInt32(c int, v uint32) error
-	WriteUInt64(c int, v uint64) error
-	WriteFloat32(c int, v float32) error
-	WriteFloat64(c int, v float64) error
-	WriteBytes(c int, v []byte) error
-	WriteArray(c int, v interface{}) error
-	WriteString(c int, v string) error
-	WriteFixedString(c int, v []byte) error
+	WriteValue(block *data.Block, column int, v driver.Value) error
 }
 
 func OpenDirect(dsn string) (Clickhouse, error) {
@@ -51,4 +35,8 @@ func (ch *clickhouse) WriteBlock(block *data.Block) error {
 		return sql.ErrTxDone
 	}
 	return ch.writeBlock(block, "")
+}
+
+func (ch *clickhouse) WriteValue(block *data.Block, column int, v driver.Value) error {
+	return block.AppendColumn(column, v)
 }

@@ -153,6 +153,10 @@ func (block *Block) AppendRow(args []driver.Value) error {
 	return nil
 }
 
+func (block *Block) AppendColumn(c int, v driver.Value) error {
+	return block.Columns[c].Write(block.buffers[c].Column, v)
+}
+
 func (block *Block) Reserve() {
 	if len(block.buffers) == 0 {
 		block.buffers = make([]*buffer, len(block.Columns))
