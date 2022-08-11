@@ -78,6 +78,9 @@ func (h *httpConnect) prepareRequest(ctx context.Context, query string, args ...
 	reader := strings.NewReader(query)
 
 	req, err := http.NewRequest(http.MethodPost, h.url.String(), reader)
+	if opt.Auth.Username != "" {
+		req.SetBasicAuth(opt.Auth.Username, opt.Auth.Password)
+	}
 
 	return req, err
 }
