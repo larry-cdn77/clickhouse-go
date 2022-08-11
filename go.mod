@@ -13,6 +13,6 @@ require (
 	github.com/stretchr/testify v1.7.5
 	github.com/tklauser/go-sysconf v0.3.10 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
-	go.opentelemetry.io/otel/trace v1.7.0
+	go.opentelemetry.io/otel/trace v1.9.0
 	golang.org/x/sys v0.0.0-20220429233432-b5fbb4746d32 // indirect
 )
