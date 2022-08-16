@@ -3,7 +3,7 @@ module github.com/ClickHouse/clickhouse-go/v2
 go 1.18
 
 require (
-	github.com/ClickHouse/ch-go v0.47.2
+	github.com/ClickHouse/ch-go v0.47.3
 	github.com/ClickHouse/clickhouse-go v1.5.4
 	github.com/andybalholm/brotli v1.0.4
 	github.com/google/uuid v1.3.0
@@ -33,7 +33,7 @@ require (
 	github.com/tklauser/go-sysconf v0.3.10 // indirect
 	github.com/tklauser/numcpus v0.4.0 // indirect
 	github.com/yusufpapurcu/wmi v1.2.2 // indirect
-	golang.org/x/sys v0.0.0-20220429233432-b5fbb4746d32 // indirect
+	golang.org/x/sys v0.0.0-20220811171246-fbc7d0a398ab // indirect
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect
 )
